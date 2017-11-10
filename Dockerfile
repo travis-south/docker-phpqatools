@@ -7,14 +7,16 @@ RUN composer global require travis-south/phpqatools:3.0.5 \
 	&& composer global require behat/mink-zombie-driver \
 	&& composer global require endouble/symfony3-custom-coding-standard \
 	&& composer global require drupal/coder
-RUN apt-get update && apt-get install nodejs -y
-RUN /composer/vendor/bin/phpcs --config-set installed_paths /composer/vendor/endouble/symfony3-custom-coding-standard,/composer/vendor/drupal/coder/coder_sniffer
-RUN yes | pecl install xdebug \
+RUN apk add --update nodejs
+RUN /tmp/vendor/bin/phpcs --config-set installed_paths /tmp/vendor/endouble/symfony3-custom-coding-standard,/tmp/vendor/drupal/coder/coder_sniffer
+RUN apk update \
+    && apk add --no-cache libmcrypt libmcrypt-dev openssh-client icu-dev \
+    libxml2-dev freetype-dev libpng-dev libjpeg-turbo-dev g++ make autoconf \
+    && pecl install xdebug \
     && echo "zend_extension=$(find /usr/local/lib/php/extensions/ -name xdebug.so)" > /usr/local/etc/php/conf.d/xdebug.ini \
     && echo "xdebug.remote_enable=on" >> /usr/local/etc/php/conf.d/xdebug.ini \
     && echo "xdebug.remote_autostart=off" >> /usr/local/etc/php/conf.d/xdebug.ini && php -m
-COPY entrypoint.sh /entrypoint.sh
-RUN chmod 777 /*.sh
+ENV PATH="/tmp/vendor/bin:${PATH}"
 VOLUME ["/app"]
 WORKDIR /app
-ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT []
