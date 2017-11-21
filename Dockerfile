@@ -7,7 +7,7 @@ RUN composer global require travis-south/phpqatools:4.0.2 \
 	behat/mink-zombie-driver \
 	drupal/coder
 RUN apk add --update nodejs
-RUN /tmp/vendor/bin/phpcs --config-set installed_paths /tmp/vendor/endouble/symfony3-custom-coding-standard,/tmp/vendor/drupal/coder/coder_sniffer
+RUN /tmp/vendor/bin/phpcs --config-set installed_paths /tmp/vendor/drupal/coder/coder_sniffer
 RUN apk update \
     && apk add --no-cache libmcrypt libmcrypt-dev openssh-client icu-dev \
     libxml2-dev freetype-dev libpng-dev libjpeg-turbo-dev g++ make autoconf \
