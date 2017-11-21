@@ -1,12 +1,11 @@
 FROM composer:1
 RUN docker-php-ext-install sockets
-RUN composer global require travis-south/phpqatools:3.0.5 \
-	&& composer global require behat/mink-extension \
-	&& composer global require behat/mink-goutte-driver \
-	&& composer global require behat/mink-selenium2-driver \
-	&& composer global require behat/mink-zombie-driver \
-	&& composer global require endouble/symfony3-custom-coding-standard \
-	&& composer global require drupal/coder
+RUN composer global require travis-south/phpqatools:4.0.2 \
+	behat/mink-extension \
+	behat/mink-goutte-driver \
+	behat/mink-selenium2-driver \
+	behat/mink-zombie-driver \
+	drupal/coder
 RUN apk add --update nodejs
 RUN /tmp/vendor/bin/phpcs --config-set installed_paths /tmp/vendor/endouble/symfony3-custom-coding-standard,/tmp/vendor/drupal/coder/coder_sniffer
 RUN apk update \
