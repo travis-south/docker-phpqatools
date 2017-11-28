@@ -8,7 +8,7 @@ RUN apk update \
     /usr/local/etc/php/conf.d/xdebug.ini \
     && echo "xdebug.remote_enable=on" >> /usr/local/etc/php/conf.d/xdebug.ini \
     && echo "xdebug.remote_autostart=off" >> /usr/local/etc/php/conf.d/xdebug.ini && php -m
-RUN composer global require travis-south/phpqatools:4.0.2 \
+RUN composer global require travis-south/phpqatools:3.0.5 \
 	behat/mink-extension \
 	behat/mink-goutte-driver \
 	behat/mink-selenium2-driver \
