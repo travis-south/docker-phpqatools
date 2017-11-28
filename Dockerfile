@@ -14,9 +14,9 @@ RUN composer global require travis-south/phpqatools:3.0.5 \
 	behat/mink-selenium2-driver \
 	behat/mink-zombie-driver \
 	drupal/coder \
-    travis-south/symfony3-custom-coding-standard
+    endouble/symfony3-custom-coding-standard
 RUN /tmp/vendor/bin/phpcs --config-set installed_paths \
-/tmp/vendor/travis-south/symfony3-custom-coding-standard,\
+/tmp/vendor/endouble/symfony3-custom-coding-standard,\
 /tmp/vendor/drupal/coder/coder_sniffer
 ENV PATH="/tmp/vendor/bin:${PATH}"
 VOLUME ["/app"]
