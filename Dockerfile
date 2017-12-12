@@ -1,4 +1,4 @@
-FROM travissouth/composer
+FROM travissouth/composer:1.5.1
 RUN apk add --update nodejs
 RUN apk update \
     && apk add --no-cache libmcrypt libmcrypt-dev openssh-client icu-dev \
