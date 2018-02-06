@@ -14,7 +14,8 @@ RUN composer global require travis-south/phpqatools:3.0.5 \
 	behat/mink-selenium2-driver \
 	behat/mink-zombie-driver \
 	drupal/coder \
-    endouble/symfony3-custom-coding-standard
+    endouble/symfony3-custom-coding-standard \
+    rregeer/phpunit-coverage-check
 RUN /tmp/vendor/bin/phpcs --config-set installed_paths \
 /tmp/vendor/endouble/symfony3-custom-coding-standard,\
 /tmp/vendor/drupal/coder/coder_sniffer
