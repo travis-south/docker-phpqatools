@@ -14,6 +14,7 @@ This image includes
 * Fabien Potencier/PHP Coding Standards Fixer
 * Sensiolabs/Security-Checker
 * Behat
+* PHPStan
 
 ## Usage
 

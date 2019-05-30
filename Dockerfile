@@ -1,4 +1,4 @@
-FROM travissouth/composer:1.5.1
+FROM travissouth/composer:1.8.5
 RUN apk add --update nodejs
 RUN apk update \
     && apk add --no-cache libmcrypt libmcrypt-dev openssh-client icu-dev \
@@ -8,18 +8,15 @@ RUN apk update \
     /usr/local/etc/php/conf.d/xdebug.ini \
     && echo "xdebug.remote_enable=on" >> /usr/local/etc/php/conf.d/xdebug.ini \
     && echo "xdebug.remote_autostart=off" >> /usr/local/etc/php/conf.d/xdebug.ini && php -m
-RUN composer global require travis-south/phpqatools:3.0.5 \
+RUN composer global require travis-south/phpqatools:5.0.0 \
 	behat/mink-extension \
 	behat/mink-goutte-driver \
 	behat/mink-selenium2-driver \
 	behat/mink-zombie-driver \
 	drupal/coder \
-    endouble/symfony3-custom-coding-standard \
     rregeer/phpunit-coverage-check
 RUN /tmp/vendor/bin/phpcs --config-set installed_paths \
-/tmp/vendor/endouble/symfony3-custom-coding-standard,\
-/tmp/vendor/drupal/coder/coder_sniffer
+    /tmp/vendor/drupal/coder/coder_sniffer
 ENV PATH="/tmp/vendor/bin:${PATH}"
-VOLUME ["/app"]
 WORKDIR /app
 ENTRYPOINT []
